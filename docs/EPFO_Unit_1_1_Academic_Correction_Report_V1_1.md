@@ -27,7 +27,9 @@ This report does **not** certify every administrative or policy claim in the ori
 | EPS | Employees’ Pension Scheme, 2026, G.S.R. 527(E) | Supersedes EPS, 1995 and Family Pension Scheme, 1971; published 30 June 2026 | Use 2026 scheme and read with G.S.R. 704(E), 847(E), 890(E) |
 | EDLI | Employees’ Deposit-Linked Insurance Scheme, 2026, G.S.R. 526(E) | Supersedes EDLI Scheme, 1976; published 30 June 2026 | Use 2026 scheme and read with G.S.R. 705(E) |
 
-**Sources:**  
+**Source-quality limitation:** The links below are third-party reproductions of Gazette notification text, not official Government of India domains. Their text can assist cross-checking, but the signed e-Gazette PDFs and corrigenda must be independently matched before final publication. Treat this report as a review finding with this disclosed limitation, not as a substitute for official-source verification.  
+
+**Sources (third-party Gazette-text reproductions):**  
 - EPF Scheme 2026: https://labour-codes-by-vivek.github.io/notifications/gsr-525-2026/  
 - EPS Scheme 2026: https://labour-codes-by-vivek.github.io/notifications/gsr-527-2026/  
 - EDLI Scheme 2026: https://labour-codes-by-vivek.github.io/notifications/gsr-526-2026/  
@@ -137,7 +139,7 @@ The review copy retains:
 - responsive layout;
 - the WhatsApp number `919899186302` and prefilled enquiry message.
 
-The corrected file is a standalone review copy. It has not been committed to GitHub, merged or deployed. A browser-based cross-device test and live WhatsApp click test remain a manual final check before public release.
+The corrected file is committed to the isolated review branch and included in draft PR #1; it has not been merged or deployed. Static syntax/structure checks are recorded in the QA report. A browser-based cross-device test and live WhatsApp click test remain outstanding before public release.
 
 ## 12. Final compliance verdict
 
