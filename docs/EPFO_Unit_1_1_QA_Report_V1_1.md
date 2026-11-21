@@ -11,7 +11,9 @@
 - [x] no legacy PYQ claim
 - Inline JavaScript syntax check: **PASS**
 - Manual browser/mobile/WhatsApp click-through: **not performed in this environment**.
-- GitHub commit/merge/deployment: **not performed**.
+- GitHub: uploaded to isolated review branch and included in draft PR #1; **not merged or deployed**.
+- Source links: scheme notifications currently point to third-party text mirrors, not official Government of India domains; official e-Gazette cross-check remains open.
+- Browser execution / mobile rendering / WhatsApp click-through: **not performed**.
 
 ## Additional HTML structural checks
 
