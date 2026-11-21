@@ -1,516 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPSC EPFO APFC &amp; EO/AO 2026 | Unit 1.1 Free Demo</title>
-    <style>
-        :root {
-            --primary-color: #1e3a8a;
-            --secondary-color: #3b82f6;
-            --bg-color: #f3f4f6;
-            --text-color: #1f2937;
-            --card-bg: #ffffff;
-            --correct-color: #10b981;
-            --incorrect-color: #ef4444;
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        header h1 { margin: 0; font-size: 1.8rem; }
-        nav {
-            background-color: var(--card-bg);
-            padding: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav button, .btn {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        nav button:hover, nav button.active, .btn:hover { background-color: var(--primary-color); }
-        main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-        .section {
-            display: none;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        .section.active { display: block; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h2 { color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem; }
-        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        table, th, td { border: 1px solid #d1d5db; }
-        th, td { padding: 0.75rem; text-align: left; }
-        th { background-color: #e5e7eb; color: var(--primary-color); }
-        .interactive-card {
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            background-color: #f9fafb;
-        }
-        .btn { margin-top: 1rem; font-size: 1rem; }
-        .feedback { margin-top: 1rem; padding: 1rem; border-radius: 4px; display: none; }
-        .feedback.correct { background-color: #d1fae5; border-left: 4px solid var(--correct-color); }
-        .feedback.incorrect { background-color: #fee2e2; border-left: 4px solid var(--incorrect-color); }
-        .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .flashcard { background-color: transparent; width: 100%; height: 200px; perspective: 1000px; cursor: pointer; }
-        .flashcard-inner {
-            position: relative; width: 100%; height: 100%; text-align: center;
-            transition: transform 0.6s; transform-style: preserve-3d;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;
-        }
-        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-        .flashcard-front, .flashcard-back {
-            position: absolute; inset: 0; backface-visibility: hidden;
-            display: flex; align-items: center; justify-content: center;
-            padding: 1.5rem; box-sizing: border-box; border-radius: 8px;
-        }
-        .flashcard-front { background-color: var(--secondary-color); color: white; font-weight: bold; font-size: 1.1rem; }
-        .flashcard-back { background-color: white; color: var(--text-color); transform: rotateY(180deg); border: 2px solid var(--secondary-color); font-size: 1rem; }
-        .radio-group label { display: block; margin: 0.5rem 0; padding: 0.5rem; background: #fff; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; }
-        .radio-group label:hover { background: #f3f4f6; }
-        .warning-label { background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 0.5rem; font-size: 0.9rem; margin-bottom: 1rem; }
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.35rem; }
-            .section { padding: 1rem; }
-            nav { position: relative; }
-            nav button { flex: 1 1 145px; }
-            table { display: block; overflow-x: auto; white-space: normal; }
-        }
-
-        /* EPFO Exam Desk public demo branding */
-        :root { --primary-color:#101d35; --secondary-color:#c79b45; --bg-color:#f3f5f8; }
-        body { background:var(--bg-color); }
-        .brand-strip { background:#0b1426; color:#f7f2e8; padding:10px 16px; text-align:center; font-size:.84rem; letter-spacing:.04em; }
-        .brand-strip strong { color:#e2bd70; }
-        .launch-hero { max-width:1000px; margin:22px auto 0; padding:28px 22px; border-radius:16px; color:#fff; background:linear-gradient(135deg,#101d35,#1c3154); box-shadow:0 10px 28px rgba(12,25,48,.16); }
-        .launch-hero .eyebrow { color:#e2bd70; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; font-weight:800; }
-        .launch-hero h2 { color:#fff; border:0; margin:8px 0; font-size:clamp(1.6rem,4vw,2.35rem); }
-        .launch-hero p { color:#e8edf5; max-width:760px; }
-        .hero-pills { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; }
-        .hero-pills span { border:1px solid rgba(226,189,112,.45); color:#f7e7c2; padding:6px 10px; border-radius:999px; font-size:.82rem; }
-        .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
-        .hero-actions a { display:inline-block; text-decoration:none; border-radius:8px; padding:11px 16px; font-weight:800; }
-        .primary-cta { background:#d8b66c; color:#111c30; }
-        .secondary-cta { border:1px solid #d8b66c; color:#fff; }
-        .public-note { max-width:1000px; margin:12px auto; padding:12px 16px; border-left:4px solid #c79b45; background:#fff9eb; color:#59451f; border-radius:8px; font-size:.9rem; }
-        .contact-panel { max-width:1000px; margin:18px auto 30px; padding:22px; background:#fff; border:1px solid #d9dee8; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,.05); }
-        .contact-panel h2 { color:#101d35; border-color:#c79b45; }
-        .contact-panel code { background:#f0f2f6; padding:3px 6px; border-radius:4px; }
-        .contact-panel .contact-cta { display:inline-block; margin-top:8px; padding:11px 16px; border-radius:8px; background:#0b1426; color:#fff; text-decoration:none; font-weight:800; }
-        header { background:#101d35; border-bottom:4px solid #c79b45; }
-        nav button, .btn { background:#c79b45; color:#101d35; }
-        nav button:hover, nav button.active, .btn:hover { background:#101d35; color:#fff; }
-        h2 { color:#101d35; border-color:#c79b45; }
-        .flashcard-front { background:#172947; }
-        @media(max-width:600px) { .launch-hero { margin:12px 10px 0; padding:22px 17px; } .public-note,.contact-panel { margin-left:10px; margin-right:10px; } }
-
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive UPSC EPFO APFC and EO/AO Unit 1.1 study resource: EPFO organisation, Code on Social Security, 2026 schemes, practice questions and flashcards.">
+<meta name="theme-color" content="#101d35">
+<meta property="og:title" content="UPSC EPFO APFC & EO/AO 2026 — Unit 1.1">
+<meta property="og:description" content="Interactive EPFO learning resource with current-law notes, practice questions and revision flashcards.">
+<title>UPSC EPFO APFC &amp; EO/AO 2026 | Unit 1.1 — V1.1 Review</title>
+<style>
+:root{--navy:#101d35;--navy2:#1c3154;--gold:#c79b45;--bg:#f3f5f8;--ink:#243044;--paper:#fff;--line:#d9dee8;--green:#16794a;--red:#a92b2b;--amber:#fff5d9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.brand{background:#0b1426;color:#f7f2e8;text-align:center;padding:9px 14px;font-size:.86rem}.brand strong{color:#e2bd70}
+.hero{max-width:1050px;margin:20px auto 0;padding:28px 22px;border-radius:16px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}
+.hero .eyebrow{color:#e2bd70;text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;font-weight:800}.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.2;margin:.5rem 0}.hero p{max-width:780px;color:#e8edf5}
+.pills{display:flex;gap:8px;flex-wrap:wrap}.pills span{border:1px solid #8d7549;border-radius:30px;padding:4px 10px;font-size:.8rem}
+.notice{max-width:1050px;margin:12px auto;padding:12px 16px;background:var(--amber);border-left:4px solid var(--gold);border-radius:8px}
+header{background:var(--navy);color:#fff;text-align:center;padding:16px;border-bottom:4px solid var(--gold)}header h2{margin:0;color:#fff}
+nav{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;justify-content:center;gap:7px;padding:12px;background:#fff;box-shadow:0 2px 5px #0001}
+nav button,.btn{border:0;border-radius:7px;background:var(--gold);color:#101d35;padding:9px 12px;font-weight:750;cursor:pointer}
+nav button.active,nav button:hover,.btn:hover{background:var(--navy);color:white}
+main{max-width:1050px;margin:22px auto;padding:0 14px}.section{display:none;background:#fff;padding:24px;border-radius:12px;box-shadow:0 4px 12px #0000000c}.section.active{display:block}
+h3{color:var(--navy);margin-top:1.4rem}h4{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.94rem}th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#edf0f5;color:var(--navy)}
+.table-wrap{overflow-x:auto}.card{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:15px;margin:14px 0}
+.tag{display:inline-block;border-radius:4px;padding:2px 7px;background:#eef1f5;font-size:.78rem;font-weight:700}.tag.warn{background:#fff1c9;color:#704f00}.tag.good{background:#e4f4eb;color:#145b36}
+.question{border:1px solid var(--line);border-radius:9px;padding:16px;margin:14px 0}.question label{display:block;margin:8px 0;padding:7px;border:1px solid #e4e7ec;border-radius:6px;cursor:pointer}.question label:hover{background:#f4f6f9}
+.feedback{display:none;margin-top:10px;padding:10px;border-radius:6px}.feedback.ok{display:block;background:#e6f5ed;border-left:4px solid var(--green)}.feedback.no{display:block;background:#fff0f0;border-left:4px solid var(--red)}
+.flashgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.flash{min-height:145px;border:1px solid var(--line);border-radius:9px;padding:16px;background:#172947;color:#fff;text-align:center;cursor:pointer;font-weight:700}.flash .answer{display:none;color:#243044;font-weight:500}.flash.revealed{background:#fff;color:#243044;border:2px solid var(--gold)}.flash.revealed .prompt{display:none}.flash.revealed .answer{display:block}
+footer{max-width:1050px;margin:20px auto 30px;background:#fff;border:1px solid var(--line);padding:20px;border-radius:12px}
+.small{font-size:.9rem;color:#596579}.sources a{overflow-wrap:anywhere}
+@media(max-width:650px){nav{position:relative}nav button{flex:1 1 145px}.section{padding:16px}.hero{margin:12px 10px 0;padding:22px 16px}.notice,footer{margin-left:10px;margin-right:10px}table{font-size:.86rem}}
+</style>
 </head>
 <body>
-<div class="brand-strip"><strong>UPSC EPFO APFC &amp; EO/AO 2026</strong> &nbsp;|&nbsp; FREE UNIT 1.1 DEMO</div>
-<section class="launch-hero" aria-label="EPFO Exam Desk free demo introduction">
-  <div class="eyebrow">Free learning sample · UPSC EPFO APFC &amp; EO/AO 2026</div>
-  <h2>Learn Concepts. Master PYQs. Prepare Smarter.</h2>
-  <p>Explore a sample of our interactive Unit 1.1 learning resource covering EPFO organisation, the EPF framework, social security schemes, statutory references, practice questions and revision flashcards.</p>
-  <div class="hero-pills"><span>Interactive learning</span><span>PYQ practice</span><span>MCQs &amp; flashcards</span><span>Revision notes</span></div>
-  <div class="hero-actions"><a class="primary-cta" href="#dashboard">Explore the free demo ↓</a><a class="secondary-cta" href="#contact">Enquire about complete preparation</a></div>
+<div class="brand"><strong>UPSC EPFO APFC &amp; EO/AO 2026</strong> | FREE UNIT 1.1 LEARNING RESOURCE</div>
+<section class="hero">
+ <div class="eyebrow">EPFO Exam Desk · Unit 1.1 · Review build V1.1</div>
+ <h1>Learn Concepts. Master PYQs. Prepare Smarter.</h1>
+ <p>Interactive study resource covering EPFO organisation, the Code on Social Security, 2020, the 2026 EPF/EPS/EDLI schemes, statutory references and revision practice.</p>
+ <div class="pills"><span>Current-law distinctions</span><span>Practice MCQs</span><span>Interactive flashcards</span><span>Revision notes</span></div>
 </section>
-<div class="public-note"><strong>Academic-use notice:</strong> This is a sample learning resource. The source material flags that statutory/legal claims and PYQ wording or answer keys require independent verification against official sources and original papers. Please use the verification notes within the module.</div>
-
-<header>
-    <h1>UPSC EPFO APFC &amp; EO/AO 2026</h1>
-    <p>Interactive Study Resource · Unit 1.1</p>
-</header>
-
-<nav id="mainNav">
-    <button class="active" onclick="showSection('dashboard', this)">1. Dashboard</button>
-    <button onclick="showSection('modules', this)">2. Modules &amp; Org</button>
-    <button onclick="showSection('schemes', this)">3. Schemes Comparison</button>
-    <button onclick="showSection('legacy', this)">4. Legacy vs Code 2020</button>
-    <button onclick="showSection('sections', this)">5. Statutory Sections</button>
-    <button onclick="showSection('pyqs', this)">6. Interactive PYQs</button>
-    <button onclick="showSection('mcqs', this)">7. Practice MCQs</button>
-    <button onclick="showSection('flashcards', this)">8. Flashcards</button>
-    <button onclick="showSection('revision', this)">9. Revision &amp; Traps</button>
+<div class="notice"><strong>Academic notice:</strong> This is a review build. The eight questions retained from the earlier material are labelled <b>PYQ-style practice — source verification pending</b>; they are not certified verbatim UPSC PYQs. Always read the 2026 schemes with their corrigenda/amendments.</div>
+<header><h2>UPSC EPFO APFC &amp; EO/AO 2026</h2><div>Interactive Study Resource · Unit 1.1</div></header>
+<nav id="nav">
+<button class="active" data-id="dashboard">1. Dashboard</button><button data-id="modules">2. Modules &amp; Org</button><button data-id="schemes">3. Schemes Comparison</button><button data-id="legacy">4. Legacy vs Code 2020</button><button data-id="sections">5. Statutory Sections</button><button data-id="pyqs">6. Interactive PYQs</button><button data-id="mcqs">7. Practice MCQs</button><button data-id="flashcards">8. Flashcards</button><button data-id="revision">9. Revision &amp; Traps</button>
 </nav>
-
 <main>
-    <section id="dashboard" class="section active">
-        <h2>Learning Dashboard &amp; Objectives</h2>
-        <div class="warning-label">Note: All content is reproduced from the supplied Unit 1.1 material. Legal and factual claims have not been independently audited in this file.</div>
-        <p>Welcome to Unit 1.1. This module covers the foundational statutory and administrative framework of India's formal sector social security architecture.</p>
-        <h3>Learning Objectives:</h3>
-        <ul>
-            <li>Understand the establishment and statutory foundation of the EPFO under the EPF &amp; MP Act, 1952 and the Code on Social Security, 2020 [2, 3].</li>
-            <li>Analyze the administrative structure, including the tripartite Central Board of Trustees (CBT) and its executive functions [2, 4].</li>
-            <li>Compare the core features, eligibility, and contributions of the EPF, EPS, and EDLI schemes [5-7].</li>
-            <li>Evaluate recent administrative reforms, digital initiatives (like UAN and CPPS), and the ELI Scheme (PM-VBRY) [3, 7, 8].</li>
-            <li>Map legacy statutory provisions to their corresponding chapters and sections in the new Code on Social Security, 2020 [3, 9, 10].</li>
-        </ul>
-    </section>
-
-    <section id="modules" class="section">
-        <h2>EPFO Organisational Structure &amp; Concepts</h2>
-        <p>The Employees' Provident Fund Organisation (EPFO) is a statutory body under the administrative control of the Ministry of Labour and Employment [2].</p>
-        <h3>Central Board of Trustees (CBT)</h3>
-        <p>Under Section 5A of the 1952 Act (and Section 4(1) of the 2020 Code), the CBT is a tripartite body corporate having perpetual succession and a common seal [2].</p>
-        <div class="interactive-card">
-            <h4>Clickable Concept: CBT Composition (Max 43 Members)</h4>
-            <ul>
-                <li><strong>Chairman &amp; Vice-Chairman:</strong> Appointed by the Central Government [2].</li>
-                <li><strong>CPFC:</strong> Ex-officio member and Chief Executive Officer [2].</li>
-                <li><strong>Central Govt Reps:</strong> Not more than 5 persons [2].</li>
-                <li><strong>State Govt Reps:</strong> Not more than 15 persons [2].</li>
-                <li><strong>Employers' Reps:</strong> 10 persons [2].</li>
-                <li><strong>Employees' Reps:</strong> 10 persons [2].</li>
-            </ul>
-        </div>
-        <h3>Applicability Thresholds</h3>
-        <p>The Act applies to establishments employing 20 or more persons [11]. However, there is a specific exemption for co-operative societies. Under Section 16(1)(a), the Act excludes establishments registered under the Co-operative Societies Act, 1912 employing less than 50 persons <strong>AND</strong> working without the aid of power [11, 12]. Both conditions are cumulative [13].</p>
-    </section>
-
-    <section id="schemes" class="section">
-        <h2>Comparison of EPF, EPS, and EDLI Schemes</h2>
-        <p>Together, these three form an integrated three-tier social security shield from a single employer remittance [14].</p>
-        <table>
-            <tr><th>Parameter</th><th>EPF Scheme, 1952 [7]</th><th>EPS, 1995 [7]</th><th>EDLI Scheme, 1976 [7]</th></tr>
-            <tr><td>Core Purpose</td><td>Retirement savings &amp; life-cycle advances</td><td>Monthly old-age, disability &amp; survivor pension</td><td>Lump-sum life insurance on death in service</td></tr>
-            <tr><td>Employee Contribution</td><td>12% (10% in notified categories)</td><td>Nil (0%)</td><td>Nil (0%)</td></tr>
-            <tr><td>Employer Contribution</td><td>3.67% (net after 8.33% EPS diversion)</td><td>8.33% (capped at ₹15,000 wage = max ₹1,250/mo)</td><td>0.50% (capped at ₹15,000 wage = max ₹75/mo)</td></tr>
-            <tr><td>Central Govt. Contribution</td><td>Nil (0%)</td><td>1.16% (up to ₹15,000 wage)</td><td>Nil (0%)</td></tr>
-            <tr><td>Key Benefit Thresholds</td><td>Lump sum + annual interest + partial advances</td><td>Min. 10 yrs service for monthly pension at 58 (early at 50); min. ₹1,000/mo</td><td>Min. ₹2.50 lakh; Max. ₹7.00 lakh lump sum on death in service</td></tr>
-        </table>
-    </section>
-
-    <section id="legacy" class="section">
-        <h2>Legacy EPF &amp; MP Act, 1952 vs. Code on Social Security, 2020</h2>
-        <p>The supplied notes state that the Code on Social Security, 2020 subsumed 9 Central social security enactments and took effect nationwide on 21 November 2025 [3]. Verify commencement and applicable notifications against official sources before relying on this statement.</p>
-        <table>
-            <tr><th>Subject / Provision</th><th>EPF &amp; MP Act, 1952 [10]</th><th>Code on Social Security, 2020 [10]</th></tr>
-            <tr><td>Contribution Wage Base</td><td>Basic Wages + DA + Retaining Allowance (Sec. 2(b) &amp; Sec. 6)</td><td>Uniform "Wages" (Sec. 2(88)) with 50% cap on exclusions. Excess exclusions are added back to wages.</td></tr>
-            <tr><td>Assessment &amp; Limitation</td><td>Section 7A — No limitation period for initiating inquiry</td><td>Section 125(1) (covers both Ch. III EPF &amp; Ch. IV ESI) — 5-year limitation</td></tr>
-            <tr><td>Appellate Authority &amp; Pre-Deposit</td><td>EPF Appellate Tribunal (Sec. 7D) / CGIT; 75% pre-deposit (Sec. 7-O)</td><td>Industrial Tribunal (under IR Code, 2020); 25% pre-deposit (Sec. 23(2))</td></tr>
-        </table>
-    </section>
-
-    <section id="sections" class="section">
-        <h2>Important Statutory Sections Reference</h2>
-        <table>
-            <tr><th>Subject Matter</th><th>Legacy Section (1952 Act) [15]</th><th>Current Section (CoSS 2020) [15]</th></tr>
-            <tr><td>Co-operative Society Exemption</td><td>Section 16(1)(a)</td><td>First Schedule, Entry 1</td></tr>
-            <tr><td>Separate Provident Fund Account</td><td>Section 16A (100+ employees)</td><td>Section 143(4)-(5)</td></tr>
-            <tr><td>Interest &amp; Penal Damages</td><td>Section 7Q &amp; 14B</td><td>Section 127 &amp; 128</td></tr>
-            <tr><td>Inspection</td><td>Section 13 (Inspectors)</td><td>Section 122 (Inspector-cum-Facilitators)</td></tr>
-        </table>
-    </section>
-
-    <section id="pyqs" class="section">
-        <h2>Interactive PYQ Practice</h2>
-        <p>These 8 questions are reproduced from the supplied material. Check original examination papers to independently confirm verbatim wording and answer keys.</p>
-        <div id="pyq-container"></div>
-    </section>
-
-    <section id="mcqs" class="section">
-        <h2>Topic-wise Practice MCQs</h2>
-        <p>Test your conceptual clarity using these practice questions generated from the supplied Unit 1.1 notes.</p>
-        <div id="mcq-container"></div>
-    </section>
-
-    <section id="flashcards" class="section">
-        <h2>Interactive Flashcards</h2>
-        <p>Click on a card to flip it and reveal the statutory definition, section, or threshold.</p>
-        <div class="flashcard-grid" id="flashcard-container"></div>
-    </section>
-
-    <section id="revision" class="section">
-        <h2>Revision &amp; Common Examination Traps</h2>
-        <h3>Key Facts:</h3>
-        <ul>
-            <li><strong>Origin:</strong> EPF Ordinance (15 Nov 1951) → EPF &amp; MP Act, 1952 (4 Mar 1952) → Code on Social Security, 2020 (effective 21 Nov 2025, as stated in supplied notes).</li>
-            <li><strong>Auto-settlement of advances:</strong> Launched April 2020 at ₹50,000 → enhanced to ₹1 lakh (April 2024) → enhanced to ₹5 lakh (June 2025).</li>
-            <li><strong>ELI Scheme / PM-VBRY:</strong> ~₹1 lakh crore outlay. Employers must add ≥ 2 employees (if &lt;50 staff) or ≥ 5 employees (if ≥50 staff) sustained for ≥ 6 months to qualify for Part B.</li>
-        </ul>
-        <h3>Common Examination Traps:</h3>
-        <div class="interactive-card">
-            <p><strong>Trap 1: Threshold Confusion</strong><br>Do not mix up 20 (Sec. 1(3) normal establishment), 50 (Sec. 16(1)(a) cooperative without power), and 100 (Sec. 16A separate PF account).</p>
-            <p><strong>Trap 2: EPS Contributions</strong><br>Employees contribute only to EPF (12%)—never to EPS or EDLI (0%).</p>
-            <p><strong>Trap 3: Appeal Pre-Deposit</strong><br>Under legacy Section 7-O it was 75%; under Section 23(2) of the Code on Social Security, 2020, it is 25%.</p>
-        </div>
-    </section>
-</main>
-
-<script>
-const pyqs = [
-{
-question: "What is the minimum number of employees employed by an establishment functioning without the aid of power and is registered under the Cooperative Societies Act, 1912 that shall require it to come within the purview of the Employees' Provident Funds and Miscellaneous Provisions Act, 1952?",
-options: ["(a) Fifty", "(b) One hundred", "(c) One hundred twenty", "(d) One hundred fifty"],
-correct: 0,
-explanation: "Section 16(1)(a) excludes cooperative societies employing less than 50 persons and working without the aid of power. Hence, employing 50 or more persons brings such a society within the Act's purview. The conditions for exclusion are cumulative."
-},
-{
-question: "What is the minimum number of employees required to be working in an establishment, so that the employer, with the authorization of the majority of the employees of the establishment, may apply to the Central Government to authorize the employer to create a separate Provident Fund Account for the employees under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952?",
-options: ["(a) One hundred", "(b) Three hundred", "(c) Five hundred", "(d) One thousand"],
-correct: 0,
-explanation: "Section 16A(1) empowers the Central Government to authorize an employer employing 100 or more persons to maintain a separate PF account, subject to the statutory requirements."
-},
-{
-question: "Which one of the following authorities constituted by the Central Government shall be the Appellate Authority under the Employees' Provident Fund and Miscellaneous Provisions Act, 1952?",
-options: ["(a) Employees Provident Funds Appellate Tribunal", "(b) National Tribunal", "(c) Labour Appellate Tribunal", "(d) Industrial Tribunal"],
-correct: 0,
-explanation: "Under Section 7D of the 1952 Act, the Central Government constituted the Employees' Provident Funds Appellate Tribunal (EPFAT)."
-},
-{
-question: "Which one of the following statements under the Employees' Provident Fund and Miscellaneous Provisions Act, 1952, is not correct?",
-options: [
-"(a) It makes provision for pension scheme including family pension.",
-"(b) It makes provision for Employees' Deposit Linked Insurance Scheme.",
-"(c) The provisions of the Act shall not be applicable to Cooperative Societies employing fifty or more persons working without the aid of power.",
-"(d) The contribution by the employer to the Fund shall be on the basis of the basic wage, dearness allowance and retaining allowance (if any) of the employee."
-],
-correct: 2,
-explanation: "Statement (c) is not correct because Section 16(1)(a) excludes only qualifying cooperative societies employing fewer than 50 persons and working without the aid of power."
-},
-{
-question: "Which one of the following is not a currently existing Scheme under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952?",
-options: [
-"(a) Employees' Provident Fund Scheme, 1952",
-"(b) Employees' Deposit-Linked Insurance Scheme, 1976",
-"(c) Employees' Pension Scheme, 1995",
-"(d) Employees' Family Pension Scheme, 1971"
-],
-correct: 3,
-explanation: "The Employees' Family Pension Scheme, 1971 was replaced by the Employees' Pension Scheme, 1995 with effect from 16 November 1995."
-},
-{
-question: "The Employees' Provident Fund and Miscellaneous Provisions Act, 1952, does not apply to which one of the following establishments registered under the Co-operative Societies Act, 1912?",
-options: [
-"(a) Establishments employing fewer than 50 persons and operating without the aid of power.",
-"(b) Establishments employing fewer than 70 persons and operating with the aid of power.",
-"(c) Establishments employing more than 50 persons or operating without the aid of power.",
-"(d) Establishments employing fewer than 20 persons or operating without the aid of power."
-],
-correct: 0,
-explanation: "Under Section 16(1)(a), exclusion applies only when both conditions are met cumulatively: fewer than 50 persons AND operating without the aid of power."
-},
-{
-question: "Which of the following statements relating to the recent steps taken by the Employees' Provident Fund Organization (EPFO) is/are correct? 1. EPFO has enhanced the auto-settlement limit for advance claims from the existing 1 lakh to 3 lakh. 2. EPFO first introduced auto-settlement of advance claims during the COVID-19 pandemic. Select the answer using the codes given below:",
-options: ["(a) 1 only", "(b) 2 only", "(c) Both 1 and 2", "(d) Neither 1 nor 2"],
-correct: 1,
-explanation: "According to the supplied notes, statement 2 is correct: EPFO introduced auto-settlement in April 2020 during COVID-19. Statement 1 is marked incorrect because the supplied notes state that the limit was enhanced to ₹5 lakh in June 2025. Verify the current official position."
-},
-{
-question: "Which of the following statements relating to the Government of India's Employment Linked Incentive (ELI) Scheme is/are correct? 1. ELI Scheme has an outlay of about 1 lakh crore. 2. Establishments registered with the EPFO are required to hire at least two additional employees (with fewer than 50 employees) or five additional employees (with 50 or more employees), on a sustained basis for at least six months, to avail benefits under the ELI Scheme. Select the answer using the codes given below:",
-options: ["(a) 1 only", "(b) 2 only", "(c) Both 1 and 2", "(d) Neither 1 nor 2"],
-correct: 2,
-explanation: "Both statements are marked correct in the supplied notes. The notes state an outlay of ₹99,446 crore (approximately ₹1 lakh crore) and the stated additional-hiring thresholds. Verify scheme guidelines for precise eligibility."
-}
-];
-
-const mcqs = [
-{
-question: "Under Section 5A of the Employees' Provident Funds and Miscellaneous Provisions Act, 1952, what is the maximum number of representatives of State Governments that the Central Government may appoint to the Central Board of Trustees?",
-options: ["(a) 10", "(b) 12", "(c) 15", "(d) 20"],
-correct: 2,
-explanation: "Under Section 5A(1)(c), not more than 15 persons represent State Governments on the CBT."
-},
-{
-question: "Under Section 23(2) of the Code on Social Security, 2020, what percentage of the determined amount due must an employer deposit before an Industrial Tribunal entertains an appeal against an order passed under Section 125?",
-options: ["(a) 10%", "(b) 25%", "(c) 50%", "(d) 75%"],
-correct: 1,
-explanation: "The supplied notes identify 25% as the pre-deposit under Section 23(2). Check the enacted provision and applicable rules before relying on it."
-},
-{
-question: "Which one of the following distinguishes an establishment granted exemption under Section 17 of the EPF & MP Act, 1952 from an unexempted establishment?",
-options: [
-"(a) An exempted establishment does not deduct any provident fund contribution from employees.",
-"(b) An exempted establishment manages its employees' provident fund corpus through its own Board of Trustees providing benefits not less favourable than the statutory scheme, while remaining subject to EPFO regulatory oversight.",
-"(c) An exempted establishment is completely outside the jurisdiction of the Central Provident Fund Commissioner.",
-"(d) An exempted establishment is exempt from paying EDLI contributions automatically without separate exemption."
-],
-correct: 1,
-explanation: "An exempted establishment manages the PF corpus through its own Board of Trustees and must provide benefits not less favourable than the statutory scheme, while remaining subject to regulatory oversight."
-},
-{
-question: "Under Section 2(88) of the Code on Social Security, 2020, if specified excluded allowances exceed 50% of all remuneration, how is the excess treated?",
-options: [
-"(a) It is ignored for computing provident fund contributions.",
-"(b) It is deemed to be remuneration and added back to 'wages' for computing contributions.",
-"(c) It is credited solely to the Employees' Deposit-Linked Insurance Fund.",
-"(d) It is subject to contribution only if the employee earns less than ₹15,000 per month."
-],
-correct: 1,
-explanation: "The supplied notes state that excluded allowances exceeding 50% of total remuneration are deemed remuneration and added back to wages."
-},
-{
-question: "Which of the following statements about International Workers (IWs) under Para 83 of the EPF Scheme, 1952 is correct?",
-options: [
-"(a) The ₹15,000 monthly wage ceiling applies strictly to all foreign nationals.",
-"(b) Foreign nationals working in covered Indian establishments without a Certificate of Coverage under a Social Security Agreement are covered from day one irrespective of salary level.",
-"(c) International Workers are exempt from contributing to the Employees' Pension Scheme, 1995.",
-"(d) International Workers contribute at 5% instead of 12%."
-],
-correct: 1,
-explanation: "The supplied notes state that International Workers are mandatorily covered from day one without the ₹15,000 wage ceiling, subject to applicable international-worker rules and exemptions."
-}
-];
-
-const flashcards = [
-{front: "Cooperative society exemption threshold?", back: "Fewer than 50 persons AND working without power (Sec. 16(1)(a))."},
-{front: "Separate PF account threshold?", back: "100 or more employees, with majority employee authorisation (Sec. 16A)."},
-{front: "Which scheme replaced Family Pension Scheme, 1971?", back: "Employees' Pension Scheme, 1995; effective 16 November 1995."},
-{front: "EPS membership: 1 September 2014 cutoff?", back: "New EPF entrants with pay above ₹15,000 are generally ineligible for EPS."},
-{front: "EDLI employer contribution in supplied notes?", back: "0.50%, subject to the stated wage ceiling; employee contribution is nil."},
-{front: "Uniform wages definition: 50% rule?", back: "Specified exclusions above 50% are added back to wages."},
-{front: "CoSS five-year limitation: section?", back: "Section 125(1), as described in the supplied notes; verify applicability."},
-{front: "Appeal pre-deposit: legacy vs supplied Code figure?", back: "Legacy Sec. 7-O: 75%; supplied CoSS figure: 25% under Sec. 23(2)."},
-{front: "EPFO auto-settlement limit in supplied notes?", back: "₹50,000 (2020) → ₹1 lakh (2024) → ₹5 lakh (June 2025)."},
-{front: "ELI additional hiring thresholds in supplied notes?", back: "2 additional (<50 baseline) or 5 (≥50 baseline), sustained for 6 months."}
-];
-
-function showSection(sectionId, button) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.querySelectorAll('#mainNav button').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
-    button.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function renderQuiz(data, containerId, prefix) {
-    const container = document.getElementById(containerId);
-    data.forEach((q, index) => {
-        const div = document.createElement('div');
-        div.className = 'interactive-card';
-        const question = document.createElement('p');
-        const strong = document.createElement('strong');
-        strong.textContent = `Q${index + 1}: `;
-        question.appendChild(strong);
-        question.appendChild(document.createTextNode(q.question));
-        div.appendChild(question);
-
-        const options = document.createElement('div');
-        options.className = 'radio-group';
-        q.options.forEach((opt, i) => {
-            const label = document.createElement('label');
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = `${prefix}-q${index}`;
-            input.value = i;
-            label.appendChild(input);
-            label.appendChild(document.createTextNode(' ' + opt));
-            options.appendChild(label);
-        });
-        div.appendChild(options);
-
-        const button = document.createElement('button');
-        button.className = 'btn';
-        button.textContent = 'Check Answer';
-        button.addEventListener('click', () => checkAnswer(prefix, index));
-        div.appendChild(button);
-
-        const feedback = document.createElement('div');
-        feedback.id = `${prefix}-feedback-${index}`;
-        feedback.className = 'feedback';
-        div.appendChild(feedback);
-        container.appendChild(div);
-    });
-}
-
-function checkAnswer(prefix, index) {
-    const dataSet = prefix === 'pyq' ? pyqs : mcqs;
-    const selected = document.querySelector(`input[name="${prefix}-q${index}"]:checked`);
-    const feedbackDiv = document.getElementById(`${prefix}-feedback-${index}`);
-    if (!selected) {
-        alert("Please select an option first.");
-        return;
-    }
-    const isCorrect = Number(selected.value) === dataSet[index].correct;
-    feedbackDiv.style.display = 'block';
-    feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-    feedbackDiv.replaceChildren();
-    const heading = document.createElement('strong');
-    heading.textContent = isCorrect ? 'Correct! ' : 'Incorrect. ';
-    feedbackDiv.appendChild(heading);
-    feedbackDiv.appendChild(document.createTextNode(dataSet[index].explanation));
-    document.querySelectorAll(`input[name="${prefix}-q${index}"]`).forEach(input => input.disabled = true);
-}
-
-function renderFlashcards() {
-    const container = document.getElementById('flashcard-container');
-    flashcards.forEach(f => {
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'flashcard';
-        card.setAttribute('aria-label', `Flashcard: ${f.front}. Activate to reveal answer.`);
-        card.innerHTML = '<div class="flashcard-inner"><div class="flashcard-front"></div><div class="flashcard-back"></div></div>';
-        card.querySelector('.flashcard-front').textContent = f.front;
-        card.querySelector('.flashcard-back').textContent = f.back;
-        card.addEventListener('click', () => card.classList.toggle('flipped'));
-        container.appendChild(card);
-    });
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    renderQuiz(pyqs, 'pyq-container', 'pyq');
-    renderQuiz(mcqs, 'mcq-container', 'mcq');
-    renderFlashcards();
-});
-</script>
-
-<section class="contact-panel" id="contact">
-  <h2>Want the complete EPFO preparation programme?</h2>
-  <p>Enquire about the complete digital learning package or the package with live online classes and doubt-solving.</p>
-  <p><strong>Message:</strong> “EPFO COMPLETE – Please share the programme details.”</p>
-  <a class="contact-cta" id="whatsappCta" href="#contact" rel="noopener">Enquire on WhatsApp</a>
-  <p id="whatsappSetupNote" style="font-size:.85rem;color:#667085;margin-top:10px">WhatsApp contact is being configured. The enquiry button will activate when the course administrator adds the official number.</p>
+<section id="dashboard" class="section active">
+<h2>Learning Dashboard &amp; Objectives</h2>
+<div class="card"><b>What this unit covers</b><ul><li>EPFO's statutory and administrative framework.</li><li>Central Board of Trustees and EPFO administration.</li><li>Code on Social Security, 2020: relevant Chapter III provisions.</li><li>EPF, EPS and EDLI schemes notified in 2026.</li><li>Legacy-to-current-law mapping and exam traps.</li></ul></div>
+<p><b>Version note:</b> This review version separates current 2026 rules from historical provisions under the EPF &amp; MP Act, 1952 and the 1952/1995/1976 schemes.</p>
 </section>
+<section id="modules" class="section">
+<h2>EPFO Organisational Structure &amp; Concepts</h2>
+<p>The Employees’ Provident Fund Organisation (EPFO) administers provident-fund, pension and deposit-linked insurance arrangements under the Ministry of Labour and Employment. The Code on Social Security, 2020 provides the current statutory framework.</p>
+<h3>Central Board of Trustees (CBT)</h3>
+<div class="card"><b>Code section 4(1) — composition structure</b><ul><li>Chairperson and Vice-Chairperson.</li><li>Up to five Central Government representatives.</li><li>Up to fifteen State Government representatives.</li><li>Ten employer representatives.</li><li>Ten employee representatives.</li><li>Central Provident Fund Commissioner as ex-officio member/Chief Executive Officer under the relevant Code provision.</li></ul><p class="small">The arithmetic maximum is 43 when both Chairperson and Vice-Chairperson are counted. Use the precise statutory wording when answering a composition question.</p></div>
+<h3>Coverage and co-operative society exclusion</h3>
+<p>Chapter III coverage ordinarily applies at the 20-employee threshold. The co-operative-society exclusion in section 20(1)(a) requires both conditions: fewer than 50 persons <b>and</b> working without the aid of power. The two conditions are cumulative.</p>
+</section>
+<section id="schemes" class="section">
+<h2>EPF, EPS and EDLI — Current Scheme Comparison</h2>
+<p><span class="tag good">2026 framework</span> EPF Scheme 2026 (G.S.R. 525(E)), EPS 2026 (G.S.R. 527(E)) and EDLI 2026 (G.S.R. 526(E)) supersede their respective legacy schemes, subject to savings for prior acts/omissions. Read each with its corrigendum and amendments.</p>
+<div class="table-wrap"><table>
+<tr><th>Parameter</th><th>EPF Scheme 2026</th><th>EPS 2026</th><th>EDLI 2026</th></tr>
+<tr><td>Purpose</td><td>Provident-fund accumulation and permitted withdrawals</td><td>Retirement, early, disability and survivor pension benefits</td><td>Assurance benefit on death while covered</td></tr>
+<tr><td>Contribution stream</td><td>Employer 12%; employee equal contribution, subject to applicable provisions</td><td>Employer 8.33% to Pension Fund; Central Government 1.16% on wages up to ₹15,000</td><td>Employer 0.5% of wages; no employee contribution</td></tr>
+<tr><td>Relevant wage ceiling</td><td>₹25,000/month (notified under S.O. 5109(E), effective 17 Sep 2026)</td><td>Central Government contribution limited to wages up to ₹15,000/month under G.S.R. 890(E)</td><td>Contribution subject to notified wage ceiling; do not automatically substitute the EPS ceiling</td></tr>
+<tr><td>Key benefit rule</td><td>Para 46 partial withdrawals; 25% minimum balance retention rule</td><td>Normally 10 years eligible service; formula and age rules in para 12</td><td>Para 21 formula; minimum and maximum assurance limits apply under stated conditions</td></tr>
+</table></div>
+<div class="card"><b>EPS calculation memory aid</b><p>For a member other than an existing member: monthly pension = pensionable wages × pensionable service ÷ 70. Pensionable wages are based on the relevant 60-month period and are subject to the wage ceiling applicable to each wage-ceiling period. Read the exceptions and transitional provisions before applying the formula.</p></div>
+<div class="card"><b>EDLI benefit — do not memorise only the headline range</b><p>Para 21 includes an average-PF-balance-linked benefit and a wage-linked formula: average monthly wages (subject to ceiling) × 35 plus 50% of average PF balance subject to ₹1.75 lakh; the benefit under that formula is subject to ₹2.5 lakh minimum and ₹7 lakh maximum, with the additional 20% provision in para 21(5). Apply the scheme's “whichever is higher” and eligibility wording.</p></div>
+</section>
+<section id="legacy" class="section">
+<h2>Legacy EPF &amp; MP Act, 1952 vs Code on Social Security, 2020</h2>
+<div class="table-wrap"><table>
+<tr><th>Topic</th><th>Legacy law</th><th>Code on Social Security, 2020</th></tr>
+<tr><td>Co-operative society exclusion</td><td>EPF &amp; MP Act, section 16(1)(a)</td><td>Section 20(1)(a)</td></tr>
+<tr><td>Separate PF account</td><td>Section 16A</td><td>Section 21</td></tr>
+<tr><td>Appeal / Tribunal</td><td>EPF Appellate Tribunal under section 7D; pre-deposit under section 7-O</td><td>Section 23(1) Tribunal; 25% pre-deposit under section 23(3)</td></tr>
+<tr><td>Interest</td><td>Section 7Q</td><td>Section 127</td></tr>
+<tr><td>Damages</td><td>Section 14B</td><td>Section 128</td></tr>
+<tr><td>Inspection</td><td>Section 13</td><td>Section 122 — Inspector-cum-Facilitator</td></tr>
+</table></div>
+<div class="card"><b>Important correction:</b> Do not map the co-operative exemption to First Schedule Entry 1; do not map separate PF accounts to section 143(4)-(5); do not cite section 23(2) for the 25% appeal deposit. The correct Code references are sections 20(1)(a), 21 and 23(3), respectively.</div>
+</section>
+<section id="sections" class="section">
+<h2>Important Statutory Sections</h2>
+<div class="table-wrap"><table><tr><th>Subject</th><th>Current reference</th><th>Exam note</th></tr>
+<tr><td>CBT</td><td>Section 4(1)</td><td>Composition under Code</td></tr><tr><td>EPF/EPS/EDLI schemes</td><td>Section 15(1)(a), (b), (c)</td><td>Three distinct schemes</td></tr>
+<tr><td>Co-operative society exclusion</td><td>Section 20(1)(a)</td><td>Fewer than 50 AND without aid of power</td></tr><tr><td>Separate PF account</td><td>Section 21</td><td>100 or more persons; employer/majority-employee application requirements</td></tr>
+<tr><td>Appeal</td><td>Section 23(1), 23(3)</td><td>Tribunal; 25% pre-deposit provision</td></tr><tr><td>Inspector-cum-Facilitator</td><td>Section 122</td><td>Inspection and facilitation</td></tr><tr><td>Interest</td><td>Section 127</td><td>Interest on delayed payment</td></tr><tr><td>Damages</td><td>Section 128</td><td>Damages for default</td></tr><tr><td>Exemptions / exempted PF</td><td>Section 143</td><td>Read exact subsection</td></tr></table></div>
+</section>
+<section id="pyqs" class="section">
+<h2>Interactive PYQ-style Practice</h2>
+<p><span class="tag warn">Source verification pending</span> These are retained from the earlier eight-question set. They are practice questions, not authenticated verbatim UPSC PYQs until matched to original papers and official keys.</p><div id="pyq-list"></div>
+</section>
+<section id="mcqs" class="section"><h2>Topic-wise Practice MCQs</h2><p>These five questions test current statutory mapping and scheme distinctions. Read the explanation after answering.</p><div id="mcq-list"></div></section>
+<section id="flashcards" class="section"><h2>Interactive Flashcards</h2><p>Tap a card to reveal the answer.</p><div class="flashgrid" id="flash-list"></div></section>
+<section id="revision" class="section">
+<h2>Revision &amp; Common Examination Traps</h2>
+<div class="card"><b>Trap 1 — Three different wage references</b><p>EPF notified wage ceiling: ₹25,000. EPS Central Government contribution ceiling: ₹15,000. Do not use one figure for both.</p></div>
+<div class="card"><b>Trap 2 — Contributions</b><p>EPF: employer 12% and employee equal contribution. EPS: employer 8.33% to Pension Fund plus Central Government 1.16% on wages up to ₹15,000. EDLI: employer 0.5%; no employee EDLI contribution.</p></div>
+<div class="card"><b>Trap 3 — Appeal deposit</b><p>Code section 23(3) provides the 25% pre-deposit. Section 23(1) identifies the Tribunal. Do not cite section 23(2).</p></div>
+<div class="card"><b>Trap 4 — Thresholds</b><p>20 employees: ordinary Chapter III coverage threshold. Co-operative society exclusion: fewer than 50 persons AND no aid of power. Separate PF account: section 21, 100 or more persons subject to statutory conditions.</p></div>
+<div class="card"><b>Trap 5 — Current vs legacy</b><p>1952 EPF Scheme, 1995 EPS and 1976 EDLI are historical/legacy instruments; the 2026 schemes are the current notified scheme texts. Read corrigenda/amendments together.</p></div>
+<h3>Scheme notification text — third-party Gazette-text mirrors</h3><p class="small">These links reproduce Gazette notifications but are not hosted on an official Government of India domain. Use them for convenient reading only; verify the signed notification and corrigenda in the e-Gazette before relying on a legal proposition. Official-source link verification remains a pre-publication task.</p><ul class="sources">
+<li><a href="https://labour-codes-by-vivek.github.io/notifications/gsr-525-2026/" target="_blank" rel="noopener">EPF Scheme 2026 — G.S.R. 525(E)</a></li>
+<li><a href="https://labour-codes-by-vivek.github.io/notifications/gsr-527-2026/" target="_blank" rel="noopener">EPS Scheme 2026 — G.S.R. 527(E), with amendments</a></li>
+<li><a href="https://labour-codes-by-vivek.github.io/notifications/gsr-526-2026/" target="_blank" rel="noopener">EDLI Scheme 2026 — G.S.R. 526(E)</a></li>
+<li><a href="https://labour-codes-by-vivek.github.io/notifications/gsr-847-2026/" target="_blank" rel="noopener">EPS membership amendment — G.S.R. 847(E)</a></li>
+<li><a href="https://labour-codes-by-vivek.github.io/notifications/gsr-890-2026/" target="_blank" rel="noopener">EPS wage amendment — G.S.R. 890(E)</a></li>
+</ul>
+</section>
+</main>
+<footer id="contact"><h2>Want the complete EPFO preparation programme?</h2><p>Enquire about the complete digital learning package or live online classes and doubt-solving.</p><p><b>Message:</b> “EPFO COMPLETE – Please share the programme details.”</p><a id="wa" class="btn" href="https://wa.me/919899186302?text=EPFO%20COMPLETE%20-%20Please%20share%20the%20programme%20details." target="_blank" rel="noopener">Enquire on WhatsApp</a><p class="small">Review build V1.1. Contact number retained from the existing public demo.</p></footer>
 <script>
-// Replace the placeholder with the official number in international format, digits only.
-// Example for India: 91 followed by the 10-digit mobile number. Do not include + or spaces.
-const WHATSAPP_NUMBER = "919899186302";
-const waButton = document.getElementById('whatsappCta');
-const waNote = document.getElementById('whatsappSetupNote');
-if (/^\d{11,15}$/.test(WHATSAPP_NUMBER)) {
-  const message = encodeURIComponent('EPFO COMPLETE - Please share the programme details.');
-  waButton.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message;
-  waButton.target = '_blank';
-  waNote.textContent = 'You will be taken to WhatsApp with a pre-filled enquiry message.';
-} else {
-  waButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    waNote.textContent = 'WhatsApp enquiry link is not configured. Please contact the course administrator.';
-  });
-}
+const practice = [
+{q:"A co-operative society is excluded under the Code only when it employs:",o:["Fewer than 50 persons and works without the aid of power","50 or fewer persons regardless of power","Fewer than 20 persons and works with power","Exactly 50 persons without power"],a:0,e:"Section 20(1)(a): both conditions are cumulative — fewer than 50 persons AND working without the aid of power."},
+{q:"Under the Code on Social Security, 2020, the provision for a separate provident fund account is:",o:["Section 20","Section 21","Section 23","Section 143"],a:1,e:"Section 21 is the separate provident fund account provision. The legacy counterpart was section 16A of the 1952 Act."},
+{q:"The 25% pre-deposit for an appeal under the Code is provided in:",o:["Section 23(1)","Section 23(2)","Section 23(3)","Section 127"],a:2,e:"Section 23(3) contains the 25% pre-deposit provision. Section 23(1) deals with the Tribunal."},
+{q:"Under EPS Scheme 2026, the Central Government contribution under para 4(2), as amended, is 1.16% on wages up to:",o:["₹10,000 per month","₹15,000 per month","₹25,000 per month","No wage ceiling"],a:1,e:"G.S.R. 890(E) amended para 4(2) to specify wages up to ₹15,000 per month, effective 17 September 2026."},
+{q:"Which statement about EDLI Scheme 2026 is correct?",o:["Employee pays 0.5% EDLI contribution","Employer contribution rate is 0.5% under S.O. 3581(E)","EDLI is funded by Central Government only","EDLI has no assurance benefit"],a:1,e:"S.O. 3581(E) notifies the employer's EDLI contribution rate at 0.5% of wages, subject to the applicable wage ceiling."}
+];
+const pyqPractice = [
+{q:"Under the legacy EPF & MP Act, the co-operative society exclusion required:",o:["Fewer than 50 persons and no aid of power","Fewer than 100 persons","Exactly 50 persons","No minimum workforce"],a:0,e:"Legacy section 16(1)(a). This is a legacy-law practice question, not a current Code section question."},
+{q:"Under legacy section 16A, the separate PF account provision related to establishments employing:",o:["20 or more","50 or more","100 or more","500 or more"],a:2,e:"Legacy section 16A. Current Code mapping is section 21."},
+{q:"Under the legacy 1952 Act, the EPF Appellate Tribunal was referred to in:",o:["Section 7D","Section 7Q","Section 14B","Section 16A"],a:0,e:"Legacy section 7D. Current Code appeal provisions are in section 23."},
+{q:"The Employees’ Pension Scheme, 1995 replaced which earlier scheme?",o:["EDLI Scheme, 1976","Employees’ Family Pension Scheme, 1971","EPF Scheme, 1952","None of these"],a:1,e:"Historical fact. EPS 2026 now supersedes EPS 1995 and the 1971 Family Pension Scheme."},
+{q:"Under the Code, the co-operative society exclusion is located in:",o:["First Schedule Entry 1","Section 20(1)(a)","Section 21","Section 143(4)"],a:1,e:"Current Code reference: section 20(1)(a)."},
+{q:"The current Code provision for a separate provident fund account is:",o:["Section 16A","Section 20(1)(a)","Section 21","Section 23(3)"],a:2,e:"Current Code reference: section 21."},
+{q:"The old EPF Scheme, 1952 International Worker provision often cited in coaching notes was:",o:["Para 46","Para 83","Para 18","Para 21"],a:1,e:"Para 83 is a legacy reference. Current International Worker provisions must be read from the 2026 scheme text."},
+{q:"A question about the ELI/PM-VBRY hiring thresholds should be treated as:",o:["Fully verified by this Unit 1.1 source","A current rule without need for guidelines","Pending primary-guideline verification","A provision of EPS para 12"],a:2,e:"The earlier portal did not include the primary scheme guidelines; the eligibility claim is not certified in this review."}
+];
+function show(id,btn){document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");btn.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.id,b)));
+function renderQuiz(items,target,prefix){const root=document.getElementById(target);items.forEach((q,i)=>{const box=document.createElement("div");box.className="question";const p=document.createElement("p");p.textContent=`Q${i+1}. ${q.q}`;box.appendChild(p);q.o.forEach((opt,j)=>{const label=document.createElement("label");const radio=document.createElement("input");radio.type="radio";radio.name=prefix+i;radio.value=j;label.append(radio,document.createTextNode(" "+opt));box.appendChild(label)});const btn=document.createElement("button");btn.className="btn";btn.textContent="Check answer";const fb=document.createElement("div");fb.className="feedback";btn.addEventListener("click",()=>{const chosen=box.querySelector("input:checked");if(!chosen){fb.className="feedback no";fb.textContent="Please select an option first.";return;}const ok=Number(chosen.value)===q.a;fb.className="feedback "+(ok?"ok":"no");fb.textContent=(ok?"Correct. ":"Review. ")+q.e;box.querySelectorAll("input").forEach(x=>x.disabled=true);btn.disabled=true;});box.append(btn,fb);root.appendChild(box);});}
+renderQuiz(pyqPractice,"pyq-list","p");renderQuiz(practice,"mcq-list","m");
+const cards=[
+["EPF wage ceiling","₹25,000/month under S.O. 5109(E), effective 17 Sep 2026."],
+["EPS Govt contribution ceiling","1.16% on wages up to ₹15,000/month under G.S.R. 890(E)."],
+["EPF contribution","Employer 12%; employee equal contribution, subject to scheme provisions."],
+["EPS employer share","8.33% of wages up to the notified ceiling."],
+["EDLI contribution","Employer 0.5%; no employee EDLI contribution."],
+["Co-operative exclusion","Section 20(1)(a): fewer than 50 persons AND without aid of power."],
+["Separate PF account","Code section 21; legacy counterpart section 16A."],
+["Appeal pre-deposit","Code section 23(3): 25%; Tribunal provision in section 23(1)."],
+["EPS pension formula","Pensionable wages × pensionable service ÷ 70 (subject to scheme conditions)."],
+["EDLI formula cue","Para 21: average balance formula and wage-linked formula; ₹2.5L–₹7L range applies under stated formula and conditions."]
+];
+const root=document.getElementById("flash-list");cards.forEach(([q,a])=>{const b=document.createElement("button");b.className="flash";b.type="button";const prompt=document.createElement("span");prompt.className="prompt";prompt.textContent=q;const answer=document.createElement("span");answer.className="answer";answer.textContent=a;b.append(prompt,answer);b.addEventListener("click",()=>b.classList.toggle("revealed"));root.appendChild(b);});
 </script>
-
-</body>
-</html>
+</body></html>
