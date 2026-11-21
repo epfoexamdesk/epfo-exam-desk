@@ -1,0 +1,24 @@
+{
+  "release": "Unit 1.1 V1.1 Review Candidate",
+  "target_branch": "release/unit-1-1-v1.1-review",
+  "production_branch_modified": false,
+  "published": false,
+  "files": {
+    "EPFO_Unit_1_1_Review_V1_1.html": {
+      "bytes": 22654,
+      "sha256": "b12d0395b93955b33bfe95a16a4b08b2155ed8ab81adf42959a31ae0816341b0"
+    },
+    "EPFO_Unit_1_1_Academic_Correction_Report_V1_1.md": {
+      "bytes": 13437,
+      "sha256": "518e0549dd3af13fa7021d5f6be651efe1f9042efbccc6e34aa753bfb4d08297"
+    },
+    "EPFO_Unit_1_1_PYQ_Provenance_Register_V1_1.md": {
+      "bytes": 2781,
+      "sha256": "125609d5dc59fe6b7dc9ce14158d94ad18e37c8e8d3b7229bf65154bffae1b31"
+    },
+    "EPFO_Unit_1_1_QA_Report_V1_1.md": {
+      "bytes": 718,
+      "sha256": "d7aa969dc0b58b54a9bc3ff80ff503f99fba8bf9cdaa57f4ebfd0b22e134c0d6"
+    }
+  }
+}
