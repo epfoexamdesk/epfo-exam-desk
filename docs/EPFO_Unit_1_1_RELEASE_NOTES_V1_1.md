@@ -11,9 +11,9 @@ This release is intended for a new branch only. Do not overwrite `main` directly
 
 ## Proposed files
 - `index.html` — corrected standalone Unit 1.1 learning portal
-- `docs/Unit_1_1_Academic_Correction_Report_V1_1.md`
-- `docs/Unit_1_1_PYQ_Provenance_Register_V1_1.md`
-- `docs/Unit_1_1_QA_Report_V1_1.md`
+- `docs/EPFO_Unit_1_1_Academic_Correction_Report_V1_1.md`
+- `docs/EPFO_Unit_1_1_PYQ_Provenance_Register_V1_1.md`
+- `docs/EPFO_Unit_1_1_QA_Report_V1_1.md`
 
 ## Preserved
 - Nine-section navigation and content architecture
@@ -36,7 +36,8 @@ This release is intended for a new branch only. Do not overwrite `main` directly
 3. Browser-test desktop and mobile layouts.
 4. Test every nav item, quiz answer, flashcard and WhatsApp enquiry link.
 5. Review legal content and source links.
-6. Merge only after owner approval.
+6. Confirm official e-Gazette PDFs/corrigenda and replace or supplement third-party mirror links.
+7. Merge only after owner approval.
 
 ## GitHub publication status
-Not published. Branch creation was attempted through the connected GitHub integration but returned HTTP 403 `Resource not accessible by integration`. No branch, commit, pull request, merge or deployment was created.
+Not published. Uploaded to `release/unit-1-1-v1.1-review` and submitted as draft PR #1 against `main`. Six release files are present. No merge or deployment has occurred; `main` remains unchanged.
